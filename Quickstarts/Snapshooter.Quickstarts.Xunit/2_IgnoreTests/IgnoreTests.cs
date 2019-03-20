@@ -52,5 +52,29 @@ namespace Snapshooter.Quickstarts.Xunit
                 SnapshotNameExtension.Create(firstname, lastname), 
                 matchOptions => matchOptions.IgnoreField("Id"));
         }
+
+        /// <summary>
+        /// Tests if the new created person is valid. If we want to ignore several
+        /// fields of the result object, we can concat the ignore options as many
+        /// times as we want.
+        /// The path to the id is given by a json path.
+        /// </summary>
+        [Fact]
+        public void CreatePerson_VerifyPersonByIgnoringSeveralFields_SuccessfulVerified()
+        {
+            // arrange
+            var serviceClient = new ServiceClient();
+
+            // act
+            TestPerson person = serviceClient.CreatePerson(
+                Guid.NewGuid(), "David", "Mustermann");
+
+            // assert
+            Snapshot.Match(person, 
+                matchOptions => matchOptions
+                    .IgnoreField("Id")
+                    .IgnoreField("Address.Plz")
+                    .IgnoreField("Relatives[0].Address.Country.Name"));
+        }
     }
 }

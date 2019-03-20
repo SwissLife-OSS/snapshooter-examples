@@ -7,10 +7,17 @@ namespace Snapshooter.Tests.Data
     {
         public static TestPersonBuilder TestPersonMarkWalton()
         {
+            return TestPerson(
+                Guid.Parse("C78C698F-9EE5-4B4B-9A0E-EF729B1F8EC8"), "Mark", "Walton");
+        }
+
+        public static TestPersonBuilder TestPerson(
+            Guid id, string firstname, string lastname)
+        {
             return TestPersonBuilder.Create()
-                    .WithId(Guid.Parse("C78C698F-9EE5-4B4B-9A0E-EF729B1F8EC8"))
-                    .WithFirstname("Mark")
-                    .WithLastname("Walton")
+                    .WithId(id)
+                    .WithFirstname(firstname)
+                    .WithLastname(lastname)
                     .WithDateOfBirth(DateTime.ParseExact("25.06.2000", "dd.MM.yyyy", CultureInfo.InvariantCulture))
                     .WithCreationDate(DateTime.ParseExact("06.06.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture))
                     .WithAge(30)
