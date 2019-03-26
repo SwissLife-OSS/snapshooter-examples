@@ -28,7 +28,6 @@
     <Folder Include="1_SimpleTests\__snapshots__\__mismatch__\" />
     <Folder Include="2_IgnoreTests\__snapshots__\" />
     <Folder Include="2_NamingTests\__snapshots__\" />
-    <Folder Include="3_SubfolderTests\" />
   </ItemGroup>
 
 </Project>
